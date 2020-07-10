@@ -30,7 +30,7 @@ public:
 		assert(m_ObjectToIndexMap.find(obj) == m_ObjectToIndexMap.end() && "Component added to same Object more than once.");
 
 		size_t newIndex = mSize;
-		m_ObjectToIndexMap[Object] = newIndex;
+		m_ObjectToIndexMap[obj] = newIndex;
 		m_IndexToObjectMap[newIndex] = obj;
 		m_ComponentArray[newIndex] = component;
 		++mSize;

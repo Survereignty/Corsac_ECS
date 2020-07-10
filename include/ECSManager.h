@@ -29,11 +29,11 @@ public:
 		return m_ObjectManager->CreateObject();
 	}
 
-	void DestroyObject(Object object)
+	void DestroyObject(Object obj)
 	{
-		m_ObjectManager->DestroyObject(object);
-		m_ComponentManager->ObjectDestroyed(object);
-		m_SystemManager->ObjectDestroyed(object);
+		m_ObjectManager->DestroyObject(obj);
+		m_ComponentManager->ObjectDestroyed(obj);
+		m_SystemManager->ObjectDestroyed(obj);
 	}
 
 	template<typename T>
@@ -47,7 +47,7 @@ public:
 	void AddComponent(Object obj, T component)
 	{
 		component.GameObject = obj;
-		m_ComponentManager->AddComponent<T>(Object, component);
+		m_ComponentManager->AddComponent<T>(obj, component);
 
 		auto signature = m_ObjectManager->GetSignature(obj);
 		signature.set(m_ComponentManager->GetComponentType<T>(), true);
